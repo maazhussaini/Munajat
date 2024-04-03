@@ -90,7 +90,7 @@ def main():
         ("Munajat-e-Maqbool", "Zariatul-Wusool")
     )
 
-    zoom = st.sidebar.slider('Zoom', 1.5, 4.5, 0.5)
+    zoom = st.sidebar.slider('Zoom', 1.75, 4.5, 0.5)
 
     if add_selectbox == "Munajat-e-Maqbool":
         Munajaat(zoom)
