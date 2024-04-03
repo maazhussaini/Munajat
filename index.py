@@ -3,9 +3,9 @@ import fitz  # PyMuPDF
 import io
 
 
-st.set_page_config(layout="centered")
+st.set_page_config(page_title="Munajat-e-Maqbool", page_icon="data/favicon.ico", layout="centered")
 
-def Munajaat(zoom):
+def Munajaat(zoom, page_title):
     
     st.title("Munajat-e-Maqbool")
     # Using a wide page layout
@@ -18,7 +18,7 @@ def Munajaat(zoom):
         pdf_bytes = pdf_file.read()
         st.download_button(label="Download PDF",
                             data=pdf_bytes,
-                            file_name="Munajat-e-Maqbool.pdf",
+                            file_name=f"{page_title}.pdf",
                             mime="application/pdf")
     
     if pdf_file_path:
@@ -44,8 +44,8 @@ def Munajaat(zoom):
                     st.image(image_stream, caption=f"Page {page_num + 1}", output_format = "auto")  # Adjust width as needed
 
 
-def Zariat(zoom):
-    st.title("Munajat-e-Maqbool")
+def Zariat(zoom, page_title):
+    st.title(page_title)
     # Using a wide page layout
 
     # Path to PDF file
@@ -56,7 +56,7 @@ def Zariat(zoom):
         pdf_bytes = pdf_file.read()
         st.download_button(label="Download PDF",
                             data=pdf_bytes,
-                            file_name="Zariatul-Wusool.pdf",
+                            file_name=f"{page_title}.pdf",
                             mime="application/pdf")
     
     if pdf_file_path:
@@ -93,9 +93,9 @@ def main():
     zoom = st.sidebar.slider('Zoom', 1.75, 4.5)
 
     if add_selectbox == "Munajat-e-Maqbool":
-        Munajaat(zoom)
+        Munajaat(zoom, add_selectbox)
     else:
-        Zariat(zoom)    
+        Zariat(zoom, add_selectbox)
     
 if __name__ == "__main__":
     main()
