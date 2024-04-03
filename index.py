@@ -3,7 +3,7 @@ import fitz  # PyMuPDF
 import io
 
 
-st.set_page_config(layout="wide")
+st.set_page_config(layout="centered")
 
 def Munajaat(zoom):
     
@@ -41,7 +41,7 @@ def Munajaat(zoom):
                     pix = page.get_pixmap(matrix=mat)  # Render page to an image with zoom
                     image_stream = io.BytesIO(pix.tobytes("png"))  # Get image bytes
                     # st.image(image_stream, caption=f"Page {page_num + 1}", use_container_width=True)
-                    st.image(image_stream, caption=f"Page {page_num + 1}", width=700)  # Adjust width as needed
+                    st.image(image_stream, caption=f"Page {page_num + 1}", output_format = "auto")  # Adjust width as needed
 
 
 def Zariat(zoom):
@@ -90,7 +90,7 @@ def main():
         ("Munajat-e-Maqbool", "Zariatul-Wusool")
     )
 
-    zoom = st.sidebar.slider('Zoom', 1, 5, 1)
+    zoom = st.sidebar.slider('Zoom', 0.5, 4.5, 0.5)
 
     if add_selectbox == "Munajat-e-Maqbool":
         Munajaat(zoom)
