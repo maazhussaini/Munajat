@@ -24,7 +24,6 @@ def displayPDF(uploaded_file):
 
 
 with st.sidebar:
-    # openai_api_key = st.text_input("OpenAI API Key", key="file_qa_api_key", type="password")
     
     uploaded_file = st.file_uploader(
         "Upload file", type=["pdf"], 
