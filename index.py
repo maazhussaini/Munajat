@@ -3,23 +3,38 @@ import fitz  # PyMuPDF
 import io
 
 
-st.set_page_config(page_title="Munajat-e-Maqbool", page_icon="data/favicon.ico", layout="centered")
+st.set_page_config(page_title="Munajat-e-Maqbool", page_icon="data/favicon.ico", layout="wide")
 
 def Munajaat(zoom, page_title):
     
-    st.title("Munajat-e-Maqbool")
-    # Using a wide page layout
-
     # Path to PDF file
     pdf_file_path = "data/Munajat-e-MaqboolByShaykhAshrafAliThanvir.a.pdf"
+    
+    with st.container():
+        
+        col1, col2, col3, col4 = st.columns([1, 5, 2, 1])
+        
+        with col3:
+            # Provide a download button for the entire PDF file
+            with open(pdf_file_path, "rb") as pdf_file:
+                pdf_bytes = pdf_file.read()
+                st.download_button(label="Download PDF",
+                                data=pdf_bytes,
+                                file_name=f"{page_title}.pdf",
+                                mime="application/pdf",
+                                use_container_width=True)
+                
+            
+        
+        with col2:
+            st.header("Munajat-e-Maqbool")
+        
+        left, center, right = st.columns([1, 7, 1])  
+        with center:
+            st.divider()
 
-    # Provide a download button for the entire PDF file
-    with open(pdf_file_path, "rb") as pdf_file:
-        pdf_bytes = pdf_file.read()
-        st.download_button(label="Download PDF",
-                            data=pdf_bytes,
-                            file_name=f"{page_title}.pdf",
-                            mime="application/pdf")
+    # st.divider()
+    # st.write("")
     
     if pdf_file_path:
         # Open the PDF file directly from the file path
