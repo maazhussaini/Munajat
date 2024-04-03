@@ -129,7 +129,7 @@ def Zariat():
 def main():
     # Using object notation
     add_selectbox = st.sidebar.selectbox(
-        "How would you like to be contacted?",
+        "Choose only one",
         ("Munajat-e-Maqbool", "Zariatul-Wusool")
     )
 
