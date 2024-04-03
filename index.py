@@ -5,7 +5,7 @@ import io
 
 st.set_page_config(layout="wide")
 
-def Munajaat():
+def Munajaat(zoom):
     
     st.title("Munajat-e-Maqbool")
     # Using a wide page layout
@@ -35,7 +35,7 @@ def Munajaat():
                 for page_num in range(pdf_document.page_count):
                     page = pdf_document.load_page(page_num)  # Load the page
                     # Define zoom factor: 5x zoom
-                    zoom = 3
+                    # zoom = 3
                     mat = fitz.Matrix(zoom, zoom)  # Zoom factor for both x and y axes
                     
                     pix = page.get_pixmap(matrix=mat)  # Render page to an image with zoom
@@ -44,7 +44,7 @@ def Munajaat():
                     st.image(image_stream, caption=f"Page {page_num + 1}", width=700)  # Adjust width as needed
 
 
-def Zariat():
+def Zariat(zoom):
     st.title("Munajat-e-Maqbool")
     # Using a wide page layout
 
@@ -73,7 +73,7 @@ def Zariat():
                 for page_num in range(pdf_document.page_count):
                     page = pdf_document.load_page(page_num)  # Load the page
                     # Define zoom factor: 5x zoom
-                    zoom = 3
+                    # zoom = 3
                     mat = fitz.Matrix(zoom, zoom)  # Zoom factor for both x and y axes
                     
                     pix = page.get_pixmap(matrix=mat)  # Render page to an image with zoom
@@ -90,11 +90,12 @@ def main():
         ("Munajat-e-Maqbool", "Zariatul-Wusool")
     )
 
+    zoom = st.slider('Zoom', 1, 5, 1)
+
     if add_selectbox == "Munajat-e-Maqbool":
-        Munajaat()
-    
+        Munajaat(zoom)
     else:
-        Zariat()    
+        Zariat(zoom)    
     
 if __name__ == "__main__":
     main()
